@@ -49,6 +49,11 @@ export const useProgressStore = create<ProgressState>()(
     }),
     {
       name: 'docker-tutorial-progress',
+      version: 2,
+      migrate: () => ({
+        unlockedLayers: [0, 1, 2, 3, 4, 5, 6, 7, 8] as LayerId[],
+        currentLayer: 0 as LayerId,
+      }),
     }
   )
 );
