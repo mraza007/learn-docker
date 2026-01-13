@@ -16,7 +16,7 @@ interface ProgressState {
 export const useProgressStore = create<ProgressState>()(
   persist(
     (set, get) => ({
-      unlockedLayers: [0], // Layer 0 is always unlocked
+      unlockedLayers: [0, 1, 2, 3, 4, 5, 6, 7, 8], // All layers unlocked - users can scroll freely
       currentLayer: 0,
 
       unlockLayer: (layer: LayerId) => {
