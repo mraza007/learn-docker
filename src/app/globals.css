@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --surface: #141414;
+  --terminal: #1a1a2e;
+  --primary: #00ff9f;
+  --secondary: #00d4ff;
+  --warning: #ffb800;
+  --danger: #ff4757;
+  --text: #e0e0e0;
+  --muted: #6b6b6b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-terminal: var(--terminal);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+/* Glow effects */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(0, 255, 159, 0.3);
+}
+
+.glow-secondary {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+/* Scanline effect (subtle) */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Locked section blur */
+.locked-blur {
+  filter: blur(4px);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Selection color */
+::selection {
+  background: var(--secondary);
+  color: var(--background);
+}
